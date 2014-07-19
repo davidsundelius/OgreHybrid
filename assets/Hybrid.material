@@ -1,0 +1,36 @@
+vertex_program Hybrid/simplevp glsl
+{
+	source simple.vert
+}
+
+fragment_program Hybrid/simplefp glsl
+{
+	source simple.frag
+}
+
+material Hybrid/material
+{
+	technique
+	{
+
+		pass
+		{
+			depth_check off
+
+			vertex_program_ref Hybrid/simplevp
+			{
+			}
+			
+			fragment_program_ref Hybrid/simplefp
+			{
+			}
+			
+			texture_unit
+			{
+				tex_coord_set 0
+				tex_address_mode clamp
+				filtering linear linear linear
+			}
+		}
+	}
+}
